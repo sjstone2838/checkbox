@@ -14,13 +14,14 @@ var settings_component_1 = require('./settings.component');
 var articles_component_1 = require('./articles.component');
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Checkbox Demo';
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <nav>\n      <a [routerLink]=\"['/settings']\" routerLinkActive=\"active\">Settings</a>\n      <a [routerLink]=\"['/articles']\">Articles</a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
-            directives: [router_1.ROUTER_DIRECTIVES, settings_component_1.SettingsComponent, articles_component_1.ArticlesComponent]
+            templateUrl: 'app/app.component.html',
+            styleUrls: ['app/app.component.css'],
+            directives: [router_1.ROUTER_DIRECTIVES, settings_component_1.SettingsComponent, articles_component_1.ArticlesComponent],
+            precompile: [settings_component_1.SettingsComponent, articles_component_1.ArticlesComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

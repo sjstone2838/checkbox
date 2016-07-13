@@ -1,0 +1,10 @@
+<div class="font--display  font--700  line-height--loose">
+    <div class="bg--black-lighter  flex--container  flex-align-items--center">
+        <span class='font--bigger  font--900 padding--x-tinier padding--y-tinier  margin--x-tinier'>Checkbox Demo</span>
+        <a class='button--base  bg--blue-base  opacity--base  border-radius--small  padding--x-tinier padding--y-tinier  margin--x-tinier  margin--y-tinier' [routerLink]="['/settings']" routerLinkActive="active">Settings</a>
+        <a class='button--base  bg--blue-base  opacity--base  border-radius--small  padding--x-tinier padding--y-tinier  margin--x-tinier  margin--y-tinier' [routerLink]="['/articles']">Articles</a>
+    </div>
+    <div class='padding--x-small padding--y-small'>
+        <router-outlet></router-outlet>
+    </div>
+</div>

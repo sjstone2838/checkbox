@@ -6,16 +6,10 @@ import { ArticlesComponent } from './articles.component';
 
 @Component({
   selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <nav>
-      <a [routerLink]="['/settings']" routerLinkActive="active">Settings</a>
-      <a [routerLink]="['/articles']">Articles</a>
-    </nav>
-    <router-outlet></router-outlet>
-  `,
-  directives: [ROUTER_DIRECTIVES, SettingsComponent, ArticlesComponent]
+  templateUrl:'app/app.component.html',
+  styleUrls:['app/app.component.css'],
+  directives: [ROUTER_DIRECTIVES, SettingsComponent, ArticlesComponent],
+  precompile: [SettingsComponent, ArticlesComponent]
 })
 export class AppComponent {
-  title = 'Checkbox Demo';
 }

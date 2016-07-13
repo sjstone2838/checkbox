@@ -1,14 +1,9 @@
 <div>
-    <h2> Checkbox components (children) </h2>
+    <p class='font--largest'> Feature Flags </p>
+    <hr>
     <div *ngFor='let setting of settings'>
         <sb-checkbox [selected]='setting'>
            {{setting.name}}
         </sb-checkbox>
-    </div>
-
-    <hr>
-    <h2> Settings component (parent) </h2>
-    <div *ngFor='let setting of settings'>
-        <div> {{setting.name}} - {{setting.isActive}} </div>
     </div>
 </div>
