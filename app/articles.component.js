@@ -11,34 +11,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+var _ = require('lodash');
 var checkbox_component_1 = require('./checkbox.component');
-var SettingsComponent = (function () {
-    function SettingsComponent(http) {
+var ArticlesComponent = (function () {
+    function ArticlesComponent(http) {
         this.http = http;
+        this.totalRead = 0;
     }
-    SettingsComponent.prototype.ngOnInit = function () {
+    ArticlesComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get('app/mock-data/settings.json')
+        this.http.get('http://api.solvebio.com/v1/articles')
             .toPromise()
             .then(function (response) {
-            _this.settings = response.json();
+            _this.articles = response.json().data;
+            _this.makeCheckboxReady(_this.articles);
         })
             .catch(this.handleError);
     };
-    SettingsComponent.prototype.handleError = function (error) {
+    // TODO: redundant vs. settings.component.ts
+    ArticlesComponent.prototype.handleError = function (error) {
         console.log('Sorry, an error occurred', error);
         return Promise.reject(error.message || error);
     };
-    SettingsComponent = __decorate([
+    // append 'isActive' property if it doesn't already exist
+    ArticlesComponent.prototype.makeCheckboxReady = function (data) {
+        _.forEach(data, function (item) {
+            if (!item.isActive) {
+                item.isActive = false;
+            }
+        });
+    };
+    ArticlesComponent.prototype.manageTotalRead = function (article) {
+        this.totalRead += article.isActive ? 1 : -1;
+    };
+    ArticlesComponent = __decorate([
         core_1.Component({
-            selector: 'sb-settings',
-            templateUrl: 'app/settings.component.html',
-            styleUrls: ['app/settings.component.css'],
+            selector: 'sb-articles',
+            templateUrl: 'app/articles.component.html',
+            styleUrls: ['app/articles.component.css'],
             directives: [checkbox_component_1.CheckboxComponent]
         }), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], SettingsComponent);
-    return SettingsComponent;
+    ], ArticlesComponent);
+    return ArticlesComponent;
 }());
-exports.SettingsComponent = SettingsComponent;
-//# sourceMappingURL=settings.component.js.map
+exports.ArticlesComponent = ArticlesComponent;
+//# sourceMappingURL=articles.component.js.map

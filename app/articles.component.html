@@ -1,0 +1,13 @@
+<div>
+  <h2> Articles </h2>
+  <h3> Total Read: {{totalRead}} </h3>
+  <ul *ngFor='let article of articles' class='clickable'>
+      <li> 
+        <div><strong>{{article.title}}</strong></div>
+        <div>{{article.created_at | date}}</div>
+        <sb-checkbox (click)="manageTotalRead(article)" [selected]='article'>
+           Read
+        </sb-checkbox>
+      </li>
+  </ul>
+</div>

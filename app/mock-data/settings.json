@@ -1,0 +1,22 @@
+[
+    {
+       "name": "protein_viewer",
+       "isActive": true
+    },
+    {
+       "name": "variant_explorer",
+       "isActive": true
+    },
+    {
+       "name": "can_manage_depositories",
+       "isActive": false
+    },
+    {
+       "name": "blacklist",
+       "isActive": false
+    },
+    {
+       "name": "whitelist",
+       "isActive": false
+    }
+]

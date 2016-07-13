@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+
+import {Http} from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
 import * as _ from 'lodash';
 
 import { CheckboxComponent } from './checkbox.component';
@@ -9,32 +13,25 @@ import { CheckboxComponent } from './checkbox.component';
   styleUrls: ['app/settings.component.css'],
   directives: [CheckboxComponent]
 })
-export class SettingsComponent {
-  settingsData = [
-    {
-       name: 'protein_viewer',
-       isActive: true
-    },
-    {
-       name: 'variant_explorer',
-       isActive: true
-    },
-    {
-       name: 'can_manage_depositories',
-       isActive: false
-    },
-    {
-       name: 'blacklist',
-       isActive: false
-    },
-  ];
+export class SettingsComponent implements OnInit {
 
-  toggleSetting(setting){
-    let selectedSetting = _.find(this.settingsData, setting)
-    selectedSetting.isActive = !selectedSetting.isActive;
+  constructor(private http: Http) {}
+  
+  //TODO: transpilation error if removed, but seems unnecessary?
+  settings;
+
+  ngOnInit(){
+     this.http.get('app/mock-data/settings.json')
+      .toPromise()
+      .then(response => {
+        this.settings = response.json();
+      })
+      .catch(this.handleError);
   }
 
-
-
+  private handleError(error: any){
+    console.log('Sorry, an error occurred', error);
+    return Promise.reject(error.message || error)
+  }
 
 }
