@@ -1,0 +1,14 @@
+<div>
+    <h2> Checkbox components (children) </h2>
+    <div *ngFor='let setting of settingsData' class='clickable'>
+        <sb-checkbox [selected]='setting'>
+           {{setting.name}}
+        </sb-checkbox>
+    </div>
+
+    <hr>
+    <h2> Settings component (parent) </h2>
+    <div *ngFor='let setting of settingsData'>
+        <div> {{setting.name}} - {{setting.isActive}} </div>
+    </div>
+</div>
