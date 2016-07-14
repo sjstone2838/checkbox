@@ -1,0 +1,22 @@
+<div class="modal" *ngIf="show">
+
+    <div class="modal__overlay" (click)="close()"></div>
+    
+    <div class="modal__content  flex--container  flex-wrap--wrap  bg--white-base">
+        
+        <div class="grid--100">
+            <ng-content></ng-content>
+        </div>
+        
+        <button class="modal__close  flex--container  flex-justify-content--center  flex-align-items--center  button--base   box--large  border--bottom-solid  border--left-solid" (click)="close()">
+
+            <p class="grid--100  flex--container  flex-justify-content--center  flex-align-items--center">
+                <i class="icon--cross  font--large  color--black-secondary  line-height--tight"></i>
+            </p>
+        </button>
+        <div class="modal__elbow-top-left"></div>
+        <div class="modal__elbow-top-right"></div>
+        <div class="modal__elbow-bottom-right"></div>
+        <div class="modal__elbow-bottom-left"></div>
+    </div>
+</div>

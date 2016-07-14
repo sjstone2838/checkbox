@@ -3,8 +3,10 @@
         <span class='font--bigger  font--900 padding--x-tinier padding--y-tinier  margin--x-tinier'>Checkbox Demo</span>
         <a class='button--base  bg--blue-base  opacity--base  border-radius--small  padding--x-tinier padding--y-tinier  margin--x-tinier  margin--y-tinier' [routerLink]="['/settings']" routerLinkActive="active">Settings</a>
         <a class='button--base  bg--blue-base  opacity--base  border-radius--small  padding--x-tinier padding--y-tinier  margin--x-tinier  margin--y-tinier' [routerLink]="['/articles']">Articles</a>
+        <a class='button--base  bg--blue-base  opacity--base  border-radius--small  padding--x-tinier padding--y-tinier  margin--x-tinier  margin--y-tinier' (click)="showContactModal()">Contact Us</a>
     </div>
     <div class='padding--x-small padding--y-small'>
         <router-outlet></router-outlet>
     </div>
+    <contact-modal show='{{contactModal}}' loading='false'></contact-modal>
 </div>

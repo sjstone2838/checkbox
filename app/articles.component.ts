@@ -15,7 +15,7 @@ import { Utils } from './utils.component';
   directives: [CheckboxComponent],
   providers: [Utils]
 })
-export class ArticlesComponent implements OnInit, OnChanges {
+export class ArticlesComponent implements OnInit {
 
   constructor(
     private http: Http,

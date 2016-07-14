@@ -1,0 +1,63 @@
+<modal-dialog show='{{show}}' loading='false'  *ngIf="show">
+       
+
+
+       <header class="grid--100  flex--container  flex-wrap--wrap  flex-justify-content--center">
+           <div class="placeholder  placeholder--1_1  grid--15  margin--bottom-tiny">
+               <img src="http://localhost:9000/solvebio-static/core/img/symbol--help--1-1.png" class="img">
+           </div>
+           <h1 class="grid--100  font--display  font--700  text--center  text--uppercase  color--black-secondary">Get In Touch</h1>
+       </header>
+       <form class="grid--100  flex--container  flex-wrap--wrap"
+           name="contactModalForm"
+           
+           novalidate>
+           <fieldset class="grid--100  border--base-solid  border--y-solid  margin--y-larger" ng-disabled="loading">
+               <div class="form__group  grid--100">
+                   <input type="text"
+                          name="full_name"
+                          
+                          
+                          auto-focus>
+                   <label class="form__label" for="email">Full Name</label>
+                   <!-- <div class="form__error" ng-messages="childrenForms.contactModalForm.full_name.$error">
+                       <p ng-message="backend">{{backEndErrors.full_name}}</p>
+                       <ng-messages-include src="errors/templates/signup/required-messages.tpl.html"></ng-messages-include>
+                   </div> -->
+               </div>
+               <div class="form__group  grid--100">
+                   <input type="text"
+                          name="email"
+                          
+                          
+                          >
+                   <label class="form__label" for="email">Email</label>
+                   <!-- <div class="form__error" ng-messages="childrenForms.contactModalForm.email.$error">
+                       <p ng-message="backend">{{backEndErrors.email}}</p>
+                       <ng-messages-include src="errors/templates/signup/email-messages.tpl.html"></ng-messages-include>
+                   </div> -->
+               </div>
+               <div class="form__group  grid--100  bg--white-base">
+                   <label class="form__label">How Can We Help?</label>
+                   <textarea msd-elastic
+                             type="text"
+                             name="message"
+                             class="form__textarea"
+                             
+                             >
+                   </textarea>
+                   <!-- <div class="form__error" ng-messages="childrenForms.contactModalForm.message.$error">
+                       <ng-messages-include src="errors/templates/signup/required-messages.tpl.html"></ng-messages-include>
+                   </div> -->
+               </div>
+           </fieldset>
+           <footer class="grid--100  flex--container  flex-justify-content--center  padding--x-smaller">
+               <button-progress class="inline-loader--green  bg--green-base  has-status" loading="loading" ng-class="{'is-clicked': contactSuccess}">
+                   Submit Your Contact Information
+                   <i class="icon--check  color--white-primary"></i>
+               </button-progress>
+           </footer>
+       </form>
+
+
+</modal-dialog>

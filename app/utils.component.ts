@@ -2,6 +2,8 @@ import * as _ from 'lodash';
 
 export class Utils {
 
+  // modal = false; 
+
   proper(s: string){
     let properArray: string[] = [];
 

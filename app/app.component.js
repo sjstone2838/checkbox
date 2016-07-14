@@ -12,16 +12,21 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var settings_component_1 = require('./settings.component');
 var articles_component_1 = require('./articles.component');
+var contact_modal_component_1 = require('./contact-modal.component');
 var AppComponent = (function () {
     function AppComponent() {
+        this.contactModal = false;
     }
+    AppComponent.prototype.showContactModal = function () {
+        this.contactModal = true;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'app/app.component.html',
             styleUrls: ['app/app.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES, settings_component_1.SettingsComponent, articles_component_1.ArticlesComponent],
-            precompile: [settings_component_1.SettingsComponent, articles_component_1.ArticlesComponent]
+            directives: [router_1.ROUTER_DIRECTIVES, settings_component_1.SettingsComponent, articles_component_1.ArticlesComponent, contact_modal_component_1.ContactModalComponent],
+            precompile: [settings_component_1.SettingsComponent, articles_component_1.ArticlesComponent, contact_modal_component_1.ContactModalComponent],
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
