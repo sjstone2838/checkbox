@@ -13,10 +13,13 @@ var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var _ = require('lodash');
 var checkbox_component_1 = require('./checkbox.component');
+var utils_component_1 = require('./utils.component');
 var ArticlesComponent = (function () {
-    function ArticlesComponent(http) {
+    function ArticlesComponent(http, utils) {
         this.http = http;
+        this.utils = utils;
         this.totalRead = 0;
+        this.searchTerm = 'john';
     }
     ArticlesComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -44,14 +47,18 @@ var ArticlesComponent = (function () {
     ArticlesComponent.prototype.manageTotalRead = function (article) {
         this.totalRead += article.isActive ? 1 : -1;
     };
+    ArticlesComponent.prototype.setProperSearchTerm = function () {
+        this.properSearchTerm = this.utils.proper(this.searchTerm || 'searchTerm');
+    };
     ArticlesComponent = __decorate([
         core_1.Component({
             selector: 'sb-articles',
             templateUrl: 'app/articles.component.html',
             styleUrls: ['app/articles.component.css'],
-            directives: [checkbox_component_1.CheckboxComponent]
+            directives: [checkbox_component_1.CheckboxComponent],
+            providers: [utils_component_1.Utils]
         }), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, utils_component_1.Utils])
     ], ArticlesComponent);
     return ArticlesComponent;
 }());

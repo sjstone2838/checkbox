@@ -1,6 +1,9 @@
 <div>
   <p class="font--largest"> Articles </p>
   <p class="font--large color--black-secondary"> Total Read: {{totalRead}} </p>
+  <input placeholder='Search...' [(ngModel)]='searchTerm' (keypress)='setProperSearchTerm()'> 
+  <p> {{properSearchTerm}} </p>
+
   <hr>
   <div class='margin--y-tiny' *ngFor='let article of articles; let i=index'>
         <div><a class="color--blue-primary" href={{article.url}}>{{i + 1}}. {{article.title}}</a></div>

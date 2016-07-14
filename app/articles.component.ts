@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges} from '@angular/core';
 
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -6,21 +6,28 @@ import 'rxjs/add/operator/toPromise';
 import * as _ from 'lodash';
 
 import { CheckboxComponent } from './checkbox.component';
+import { Utils } from './utils.component';
 
 @Component({
   selector: 'sb-articles',
   templateUrl: 'app/articles.component.html',
   styleUrls: ['app/articles.component.css'],
-  directives: [CheckboxComponent]
+  directives: [CheckboxComponent],
+  providers: [Utils]
 })
-export class ArticlesComponent implements OnInit {
+export class ArticlesComponent implements OnInit, OnChanges {
 
-  constructor(private http: Http) {}
+  constructor(
+    private http: Http,
+    private utils: Utils
+  ) {}
   
   totalRead: number = 0;
 
   //TODO: transpilation error if removed, but seems unnecessary?
-  articles
+  articles;
+  searchTerm = 'john';
+  properSearchTerm;
 
   ngOnInit(){
      this.http.get('http://api.solvebio.com/v1/articles')
@@ -49,6 +56,10 @@ export class ArticlesComponent implements OnInit {
 
   manageTotalRead(article){
     this.totalRead += article.isActive ? 1 : -1;
+  }
+
+  setProperSearchTerm(){
+    this.properSearchTerm = this.utils.proper(this.searchTerm || 'searchTerm');
   }
 
 }
